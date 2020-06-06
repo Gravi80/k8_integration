@@ -30,14 +30,14 @@ services:
     image: mesosphere/aws-cli
     depends_on:
       - localstack
-    entrypoint: /s3/seed-data/seed-data.py
+    entrypoint: /aws/setup-aws.py
     environment:
       - AWS_ACCESS_KEY_ID=foo
       - AWS_SECRET_ACCESS_KEY=bar
       - AWS_SESSION_TOKEN=baz
       - AWS_DEFAULT_REGION=eu-central-1
     volumes:
-      - ./aws_mock/s3:/s3
+      - ./aws_mock:/aws
 
   mock-server:
     image: pretenders/pretenders:1.4
