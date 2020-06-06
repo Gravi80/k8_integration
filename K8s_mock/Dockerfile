@@ -1,8 +1,8 @@
 FROM alpine:latest
 EXPOSE 8001
 
-ADD ./K8s_mock/configs/cluster-config.yaml /configs/cluster-config.yaml
-ADD ./K8s_mock/start_kind.sh /scripts/start_kind.sh
+ADD ./k8s_mock/configs/cluster-config.yaml /configs/cluster-config.yaml
+ADD ./k8s_mock/start_kind.sh /scripts/start_kind.sh
 
 RUN mkdir packages
 RUN apk update && apk add curl docker

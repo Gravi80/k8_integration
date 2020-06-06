@@ -3,14 +3,14 @@ services:
   kubernetes:
     build:
       context: .
-      dockerfile: ./K8s_mock/Dockerfile
+      dockerfile: ./k8s_mock/Dockerfile
     # image: ravisharma11/kind:v1
     command: "demo-cluster"
     ports:
       - "8001:8001"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
-      - "./K8s_mock/configs/:/configs"
+      - "./k8s_mock/configs/:/configs"
 
   localstack:
     image: localstack/localstack
