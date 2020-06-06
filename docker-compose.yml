@@ -1,0 +1,28 @@
+version: '3'
+services:
+  kubernetes:
+    build:
+      context: .
+      dockerfile: ./K8s_mock/Dockerfile
+    # image: ravisharma11/kind:v1
+    command: "demo-cluster"
+    ports:
+      - "8001:8001"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "./K8s_mock/configs/:/configs"
+
+  localstack:
+    image: localstack/localstack
+    ports:
+      - "4566-4599:4566-4599"
+      - "${PORT_WEB_UI-8080}:${PORT_WEB_UI-8080}"
+    environment:
+      - SERVICES=s3
+      - DEBUG=1
+      - PORT_WEB_UI=${PORT_WEB_UI- }
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      - DEFAULT_REGION=eu-central-1
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+
