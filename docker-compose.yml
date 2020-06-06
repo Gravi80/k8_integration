@@ -30,7 +30,7 @@ services:
     image: mesosphere/aws-cli
     depends_on:
       - localstack
-    entrypoint: /s3/seed-data/setup.sh
+    entrypoint: /s3/seed-data/seed-data.py
     environment:
       - AWS_ACCESS_KEY_ID=foo
       - AWS_SECRET_ACCESS_KEY=bar
